@@ -1,0 +1,129 @@
+//评测题目: 
+一、二叉树翻转
+给定一棵二叉树，要求将整棵树的左右节点互换，不是满二叉树，即左右子节点均可为空。
+/**
+节点
+*/
+Class Node {
+	private String value;
+    private Node leftNode;
+    private Node rightNode;
+}
+
+class TreeUtil {
+	public void final static reverseTree(Node root) {
+    	if(null == root) {
+        	return;
+        }
+        
+    	Node leftNode = root.getLeftNode();
+        Node rightNode = root.getRightNode();
+        root.setLeftNode(rightNode);
+        root.setRightNode(leftNode);
+        
+        leftNode = root.getLeftNode();
+        reverseTree(leftNode);
+        
+        rightNode = root.getRightNode();
+        reverseTree(rightNode);
+    }
+    
+    public void final static reverseTreeUsingCircle(Node root) {
+    	if(null == root) {
+        	return;
+        }
+        
+    	Node leftNode = root.getLeftNode();
+        Node rightNode = root.getRightNode();
+        root.setLeftNode(rightNode);
+        root.setRightNode(leftNode);
+        
+        leftNode = root.getLeftNode();
+        reverseTree(leftNode);
+        
+        rightNode = root.getRightNode();
+        reverseTree(rightNode);
+    }
+}
+##### Test ############
+
+public void test1_returnSuccess() {
+	Node root = new Node("a");
+    Node rootLeft = new Node("b");
+    Node rootRight = new Node("c");
+    root.setLeftNode(rootLeft);
+    root.setRightNode(rootRight);
+    TreeUtil.reverseTree(root);
+    assertEqual("b".equals(right))
+    assertEqual("c".equals(left))
+}
+
+public void test2_returnSuccess() {
+	Node root = new Node("a");
+    Node rootLeft = new Node("b");
+    rootLeft.setLeft(new Node("d"));
+    rootLeft.setRight(new Node("d"));
+    Node rootRight = new Node("c");
+    root.setLeftNode(rootLeft);
+    root.setRightNode(rootRight);
+    TreeUtil.reverseTree(root);
+    assertEqual("b".equals(right))
+    assertEqual("c".equals(left))
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+二、链表环的长度
+给定一个单链表，如何检测链表中存在环并确定环的长度，程序实现。
+List {
+	private String value;
+    private List next;
+}
+
+int countCircleNum(List head) {
+	if (head == null) {
+    	return ZERO;
+    }
+    int length = ONE;
+	// 使用一个Map来判断是否有重复的节点
+    Map map = new HshMap();
+    map.put(head, xxx);
+    
+    List next = head.next();
+    while(null != next) {
+    	List list = map.get(next);
+        if(null != list) {
+        	return length -1;
+        }
+        
+        length ++;
+    	next = next.next();
+    }
+    
+    return ZERO;
+}
+
+
+
+
+
+
+
+
+
+
+
+
